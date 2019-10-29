@@ -1,10 +1,8 @@
 ---
 
-- name: clone ansible awx repo
-  tasks:
-    - name: clone repo
-      git:
-       repo: ssh://git@github.com:ansible/awx.git
-       dest: /awx
-       accept_hostkey: yes
+- name: clone repo
+  git:
+    repo: ssh://git@github.com:ansible/awx.git
+    dest: /awx
+    accept_hostkey: yes
 

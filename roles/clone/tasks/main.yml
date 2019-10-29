@@ -1,8 +1,7 @@
 ---
 
-- name: cone ansible awx repo
-   hosts: all
-   tasks:
+- name: clone ansible awx repo
+  tasks:
     - name: clone repo
       git:
        repo: ssh://git@github.com:ansible/awx.git

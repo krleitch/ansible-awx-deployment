@@ -1,7 +1,11 @@
 ---
 
-- name: test
-  hosts: all
-  tasks:
-   - name: test
-   - shell: echo "test"
+- name: cone ansible awx repo
+   hosts: all
+   tasks:
+    - name: clone repo
+      git:
+       repo: ssh://git@github.com:ansible/awx.git
+       dest: /awx
+       accept_hostkey: yes
+

@@ -1,6 +1,8 @@
 ---
 - name: hello world
   hosts: all
+  roles:
+   - clone
   tasks:
    - name: echo hello world
      shell: echo "Hello World!" 

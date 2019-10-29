@@ -2,7 +2,7 @@
 
 - name: clone repo
   git:
-    repo: ssh://git@github.com:ansible/awx.git
+    repo: git@github.com:ansible/awx.git
     dest: /awx
     accept_hostkey: yes
 

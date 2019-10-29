@@ -11,7 +11,10 @@
   when: check_python.rc != 0
 
 - name: create python virtualenv
-  command: /usr/local/bin/virtualenv "{{virtualenv_location}}/awxenv"
+  pip:
+    name: docker-compose
+    virtualenv: "{{virtualenv_location}}/awxenv"
+    virtualenv_command: /usr/local/bin/virtualenv
 
 - name: clone repo
   git:

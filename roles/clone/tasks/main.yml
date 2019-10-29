@@ -1,8 +1,10 @@
 ---
 
+- name: create python virtualenv
+  command: virtualenv {{virtualenv_location}} -p python2.7
+
 - name: clone repo
   git:
     repo: git@github.com:ansible/awx.git
-    dest: /awx
+    dest: {{virtualenv_location}}/awx
     accept_hostkey: yes
-

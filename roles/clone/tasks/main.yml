@@ -1,5 +1,15 @@
 ---
 
+- name: check python
+  raw: test -e /usr/bin/python
+  changed_when: false
+  failed_when: false
+  register: check_python
+
+- name: install python
+  raw: yum -y nstall python
+  when: check_python.rc != 0
+
 - name: create python virtualenv
   command: /usr/local/bin/virtualenv "{{virtualenv_location}}/awxenv"
 

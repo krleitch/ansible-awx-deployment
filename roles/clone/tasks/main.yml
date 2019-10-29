@@ -1,9 +1,7 @@
 ---
 
 - name: create python virtualenv
-  pip:
-    virtualenv: "{{virtualenv_location}}/awxenv"
-    virtualenv_command: /usr/local/bin/virtualenv
+  command: /usr/local/bin/virtualenv "{{virtualenv_location}}/awxenv"
 
 - name: clone repo
   git:

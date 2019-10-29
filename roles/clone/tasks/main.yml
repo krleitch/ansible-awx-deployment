@@ -1,7 +1,7 @@
 ---
 
 - name: create python virtualenv
-  command: "virtualenv {{virtualenv_location}} -p python2.7"
+  command: "virtualenv {{virtualenv_location}}"
 
 - name: clone repo
   git:

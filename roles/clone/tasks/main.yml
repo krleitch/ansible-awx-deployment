@@ -39,27 +39,27 @@
 
 - name: check if awx repo exists
   stat:
-    path: "{{awx_location}}/awx"
+    path: "{{awx_location}}"
   register: repo_exists
 
 - name: clone repo
   git:
     repo: git@github.com:ansible/awx.git
-    dest: "{{awx_location}}/awx"
+    dest: "{{awx_location}}"
     accept_hostkey: yes
   when: repo_exists.stat.exists
 
 - name: edit awxcompose location
   lineinfile:
-    path: "{{awx_location}}/awx/installer/inventory"
+    path: "{{awx_location}}/installer/inventory"
     regexp: '^docker_compose_dir='
     line: "docker_compose_dir={{awxcompose_location}}"
 
 - name: edit pgdocker location
   lineinfile:
-    path: "{{awx_location}}/awx/installer/inventory"
+    path: "{{awx_location}}/installer/inventory"
     regexp: '^postgres_data_dir='
     line: "postgres_data_dir={{pgdocker_location}}"
 
 # - name: run the installer
-#  command: "ansible-playbook -i {{awx_location}}/awx/installer/inventory {{awx_location}}/awx/installer/install.yml"
+#  command: "ansible-playbook -i {{awx_location}}/installer/inventory {{awx_location}}/installer/install.yml"

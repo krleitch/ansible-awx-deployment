@@ -22,10 +22,10 @@
 - name: create python virtualenv with proper
   pip:
     name:
-     - python-pip 
      - docker-compose
-    state: present
+    executable: "{{ docker_compose_pip_executable }}"
     virtualenv: "{{virtualenv_location}}"
+    state: present
 
 # - name: clone repo
 #  git:

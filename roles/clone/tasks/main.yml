@@ -16,21 +16,21 @@
     state: present
 
 # do when docker -v doesnt exist
-- name: get docker
-  command: curl -sSL https://get.docker.com/ | sh
+# - name: get docker
+#  command: curl -sSL https://get.docker.com/ | sh
 
-- name: add user to docker group
-  command: usermod -aG docker $USER
+#- name: add user to docker group
+#  command: usermod -aG docker $USER
 
 # Do when node -v and npm -v dont exist
-- name: yum install make
-  command: yum install -y gcc-c++ make
+#- name: yum install make
+#  command: yum install -y gcc-c++ make
 
-- name: get stable release nodejs
-  command: curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -
+#- name: get stable release nodejs
+#  command: curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -
 
-- name: install nodejs
-  command: yum install nodejs
+#- name: install nodejs
+#  command: yum install nodejs
 
 - name: install docker-compose
   pip:

@@ -1,3 +1,5 @@
 ---
 
 awx_location: /myawx
+awxcompose_location: /tmp/awxcompose
+pgdocker_location: /tmp/pgdocker

@@ -1,8 +1,8 @@
 ---
-- name: hello world
+- name: setup and clone awx repo
   hosts: all
   roles:
    - clone
   tasks:
-   - name: echo hello world
-     shell: echo "Hello World!" 
+   - name: echo message
+     shell: echo "completed!" 

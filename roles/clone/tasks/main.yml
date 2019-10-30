@@ -10,6 +10,11 @@
   raw: yum -y nstall python
   when: check_python.rc != 0
 
+- name: Installing packages
+  package:
+    name: "{{ docker_compose_packages }}"
+    state: present
+
 - name: install virtualenv
   pip:
     name: virtualenv

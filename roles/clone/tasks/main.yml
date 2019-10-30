@@ -15,12 +15,16 @@
     name: python-pip
     state: present
 
-# do when docker -v doesnt exist
-# - name: get docker
-#  command: curl -sSL https://get.docker.com/ | sh
+- name: check if docker is installed
+  command: docker --version
+  register: docker_installed
 
-#- name: add user to docker group
-#  command: usermod -aG docker $USER
+- name: get docker
+  command: curl -sSL https://get.docker.com/ | sh
+  when: "docker_installed.stdout == docker: command not found"
+
+- name: add user to docker group
+  command: usermod -aG docker $USER
 
 # Do when node -v and npm -v dont exist
 #- name: yum install make

@@ -18,7 +18,7 @@
 - name: check if docker is installed
   command: docker --version
   register: docker_installed
-  failed_when: "'command not found' in docker_version.stdout"
+  failed_when: "'command not found' in docker_installed.stdout"
 
 - name: get docker
   shell: curl -sSL https://get.docker.com/ | sh

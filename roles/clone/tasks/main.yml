@@ -25,7 +25,7 @@
   when: docker_installed.rc != 0
 
 - name: add user to docker group
-  shell: usermod -aG docker $USER
+  shell: usermod -aG docker $(whoami)
 
 - name: check if node is installed
   command: node --version

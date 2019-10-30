@@ -16,12 +16,14 @@
     state: present
 
 - name: check if docker is installed
-  command: docker --version
+  expect:
+    command: docker --version
+    responses: "docker: command not found"
   register: docker_installed
 
 - name: get docker
   command: curl -sSL https://get.docker.com/ | sh
-  when: docker_installed.stdout == "docker: command not found"
+  when: docker_installed.rc != 0
 
 - name: add user to docker group
   command: usermod -aG docker $USER

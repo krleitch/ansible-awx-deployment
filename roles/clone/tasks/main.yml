@@ -40,14 +40,14 @@
 - name: check if awx repo exists
   stat:
     path: "{{awx_location}}/awx"
-  register: repo_exists.rc != 0
+  register: repo_exists
 
 - name: clone repo
   git:
     repo: git@github.com:ansible/awx.git
     dest: "{{awx_location}}/awx"
     accept_hostkey: yes
-  when: repo_exists.stat.exists
+  when: repo_exists.rc != 0
 
 - name: edit awxcompose location
   lineinfile:

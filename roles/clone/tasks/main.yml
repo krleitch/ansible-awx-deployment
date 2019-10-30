@@ -22,7 +22,8 @@
 - name: create python virtualenv
   pip:
     name: docker-compose
-    virtualenv: "{{virtualenv_location}}"
+    state: present
+#    virtualenv: "{{virtualenv_location}}"
 
 # - name: clone repo
 #  git:

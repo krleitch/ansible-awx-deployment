@@ -20,6 +20,9 @@
     name: virtualenv
     state: present
 
+- name: create virtualenv
+  command: "virtualenv {{virtualenv_location}}" 
+
 - name: create python virtualenv with proper
   pip:
     name: docker-compose

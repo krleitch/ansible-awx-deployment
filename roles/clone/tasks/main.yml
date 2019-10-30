@@ -19,8 +19,8 @@
 - name: get docker
   command: curl -sSL https://get.docker.com/ | sh
 
-- name: add user to docker
-  command: usermod -aG docker $(whoami)
+- name: add user to docker group
+  command: usermod -aG docker $USER
 
 # Do when node -v and npm -v dont exist
 - name: yum install make
@@ -37,12 +37,17 @@
     name: docker-compose
     state: present
 
-# do if repo isnt already clones
+- name: check if awx repo exists
+  stat:
+    path: "{{awx_location}}/awx"
+  register: repo_exists.rc != 0
+
 - name: clone repo
   git:
     repo: git@github.com:ansible/awx.git
     dest: "{{awx_location}}/awx"
     accept_hostkey: yes
+  when: repo_exists.stat.exists
 
 - name: edit awxcompose location
   lineinfile:
@@ -56,5 +61,5 @@
     regexp: '^postgres_data_dir='
     line: "postgres_data_dir={{pgdocker_location}}"
 
-- name: run the installer
-  command: "ansible-playbook -i {{awx_location}}/awx/installer/inventory {{awx_location}}/awx/installer/install.yml"
+# - name: run the installer
+#  command: "ansible-playbook -i {{awx_location}}/awx/installer/inventory {{awx_location}}/awx/installer/install.yml"

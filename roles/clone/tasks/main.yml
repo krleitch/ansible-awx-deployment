@@ -16,27 +16,26 @@
     state: present
 
 - name: check if docker is installed
-  expect:
-    command: docker --version
-    responses: "docker: command not found"
+  command: docker --version
   register: docker_installed
+  failed_when: "'command not found' in docker_version.stdout"
 
 - name: get docker
-  command: curl -sSL https://get.docker.com/ | sh
+  shell: curl -sSL https://get.docker.com/ | sh
   when: docker_installed.rc != 0
 
 - name: add user to docker group
-  command: usermod -aG docker $USER
+  shell: usermod -aG docker $USER
 
 # Do when node -v and npm -v dont exist
 #- name: yum install make
-#  command: yum install -y gcc-c++ make
+#  shell: yum install -y gcc-c++ make
 
 #- name: get stable release nodejs
-#  command: curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -
+#  shell: curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -
 
 #- name: install nodejs
-#  command: yum install nodejs
+#  shell: yum install nodejs
 
 - name: install docker-compose
   pip:

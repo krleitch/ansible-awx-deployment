@@ -19,8 +19,8 @@
     name: docker-compose
     virtualenv: "{{virtualenv_location}}"
 
-- name: clone repo
-  git:
-    repo: git@github.com:ansible/awx.git
-    dest: "{{virtualenv_location}}/awx"
-    accept_hostkey: yes
+# - name: clone repo
+#  git:
+#    repo: git@github.com:ansible/awx.git
+#    dest: "{{virtualenv_location}}/awx"
+#    accept_hostkey: yes

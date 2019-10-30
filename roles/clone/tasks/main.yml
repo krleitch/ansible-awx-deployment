@@ -21,7 +21,7 @@
 
 - name: get docker
   command: curl -sSL https://get.docker.com/ | sh
-  when: "docker_installed.stdout == docker: command not found"
+  when: docker_installed.stdout == "docker: command not found"
 
 - name: add user to docker group
   command: usermod -aG docker $USER

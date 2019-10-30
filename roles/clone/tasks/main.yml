@@ -32,17 +32,17 @@
   register: node_installed
   failed_when: "'command not found' in node_installed.stdout"
 
-#- name: yum install make
-#  shell: yum install -y gcc-c++ make
-#  when: node_installed.rc != 0
+- name: yum install make
+  shell: yum install -y gcc-c++ make
+  when: node_installed.rc != 0
 
-#- name: get stable release nodejs
-#  shell: curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -
-#  when: node_installed.rc != 0
+- name: get stable release nodejs
+  shell: curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -
+  when: node_installed.rc != 0
 
-#- name: install nodejs
-#  shell: yum install nodejs
-#  when: node_installed.rc != 0
+- name: install nodejs
+  shell: yum install nodejs
+  when: node_installed.rc != 0
 
 - name: install docker-compose
   pip:

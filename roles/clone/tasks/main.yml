@@ -19,6 +19,9 @@
 - name: get docker
   command: curl -sSL https://get.docker.com/ | sh
 
+- name: add user to docker
+  command: usermod -aG docker $(whoami)
+
 # Do when node -v and npm -v dont exist
 - name: yum install make
   command: yum install -y gcc-c++ make

@@ -47,7 +47,7 @@
     repo: git@github.com:ansible/awx.git
     dest: "{{awx_location}}/awx"
     accept_hostkey: yes
-  when: repo_exists.rc != 0
+  when: repo_exists.stat.exists
 
 - name: edit awxcompose location
   lineinfile:

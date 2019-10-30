@@ -1,3 +1,5 @@
 ---
 
 virtualenv_location: /awxenv
+docker_compose_packages:
+  - python-pip

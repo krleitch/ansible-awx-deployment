@@ -1,6 +1,3 @@
 ---
 
-virtualenv_location: /awxenv
-docker_compose_packages:
-  - python-pip
-docker_compose_pip_executable: pip
+awx_location: /myawx

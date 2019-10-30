@@ -7,7 +7,7 @@
   register: check_python
 
 - name: install python
-  raw: yum -y nstall python
+  raw: yum -y install python
   when: check_python.rc != 0
 
 - name: install pip
@@ -15,22 +15,13 @@
     name: python-pip
     state: present
 
-- name: install virtualenv
-  pip:
-    name: virtualenv
-    state: present
-
-- name: create virtualenv
-  command: "virtualenv {{virtualenv_location}}" 
-
-- name: create python virtualenv with proper
+- name: install docker-compose
   pip:
     name: docker-compose
-    virtualenv: "{{virtualenv_location}}"
     state: present
 
-# - name: clone repo
-#  git:
-#    repo: git@github.com:ansible/awx.git
-#    dest: "{{virtualenv_location}}/awx"
-#    accept_hostkey: yes
+- name: clone repo
+  git:
+    repo: git@github.com:ansible/awx.git
+    dest: "{{awx_location}}/awx"
+    accept_hostkey: yes

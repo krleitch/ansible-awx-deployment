@@ -27,8 +27,8 @@
 - name: add user to docker group
   shell: usermod -aG docker $(whoami)
 
-- name: ensure docker is running properly
-  command: service docker restart
+# - name: ensure docker is running properly
+#   command: service docker restart
 
 - name: check if node is installed
   command: node --version

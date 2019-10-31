@@ -27,6 +27,9 @@
 - name: add user to docker group
   shell: usermod -aG docker $(whoami)
 
+- name: ensure docker is running properly
+  command: service docker restart
+
 - name: check if node is installed
   command: node --version
   register: node_installed
@@ -74,4 +77,6 @@
     line: "postgres_data_dir={{pgdocker_location}}"
 
 # - name: run the installer
-#  command: "ansible-playbook -i {{awx_location}}/installer/inventory {{awx_location}}/installer/install.yml"
+#     command: "ansible-playbook -i inventory install.yml"
+#     args:
+#       chdir: "{{awx_location}}/installer"

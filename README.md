@@ -1,4 +1,4 @@
-# ansible-playbooks
+# Ansible-Playbooks
 Install, setup, and run ansible awx on your ec2 hosts or run local
 https://github.com/ansible/awx
 
@@ -9,7 +9,9 @@ make sure you update target with your own host
 
 # Roles
 install: Gets ansible, postgres, python, pip, docker, docker-compose, node, npm
+
 setup: clones the awx repo, edits config files, setup external postgres db, creates docker group
+
 run: runs the awx ansible install playbook
 
 # Variables
@@ -22,10 +24,15 @@ awxcompose_location: /tmp/awxcompose
 pgdocker_location: /tmp/pgdocker
 
 postgres_host:
+
 postgres_port: 5432
+
 postgres_db: awx
+
 postgres_user:
+
 postgres_password:
+
 postgres_admin_password:
 
 # AWX CLI

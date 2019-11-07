@@ -24,10 +24,15 @@ awxcompose_location: /tmp/awxcompose
 pgdocker_location: /tmp/pgdocker
 
 postgres_host:
+
 postgres_port: 5432
+
 postgres_db: awx
+
 postgres_user:
+
 postgres_password:
+
 postgres_admin_password:
 
 # AWX CLI

@@ -23,7 +23,9 @@
   when: check_python.rc != 0
 
 - name: install pip
-  command: curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py > python
+  shell: curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py > python
+  args:
+    warn: no
 
 - name: install docker-compose
   pip:
@@ -31,7 +33,9 @@
     state: present
 
 - name: get nvm
-  command: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash . ~/.nvm/nvm.sh
+  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash . ~/.nvm/nvm.sh
+  args:
+    warn: no
 
 - name: run nvm
   command: . ~/.nvm/nvm.sh

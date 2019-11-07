@@ -1,5 +1,5 @@
 # ansible-playbooks
-Install, setup, and run ansible awx on your ec2 hosts
+Install, setup, and run ansible awx on your ec2 hosts or run local
 https://github.com/ansible/awx
 
 run:
@@ -30,7 +30,7 @@ postgres_admin_password:
 
 # AWX CLI
 
-User to interact with the installed instances
+Use to interact with the installed instances
 
 install:
 sudo pip install "https://github.com/ansible/awx/archive/8.0.0.tar.gz#egg=awxkit&subdirectory=awxkit"

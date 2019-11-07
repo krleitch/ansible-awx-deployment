@@ -1,0 +1,2 @@
+[target]
+myhost.com ansible_connection=ssh

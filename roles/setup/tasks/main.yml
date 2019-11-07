@@ -1,0 +1,64 @@
+---
+
+- name: add user to docker group
+  shell: usermod -aG docker $(whoami)
+
+- name: restart docker service
+  command: service docker restart
+
+- name: check if awx repo exists
+  stat:
+    path: "{{awx_location}}"
+  register: repo_exists
+
+- name: clone repo
+  git:
+    repo: git@github.com:ansible/awx.git
+    dest: "{{awx_location}}"
+    accept_hostkey: yes
+  when: repo_exists.stat.exists == false
+
+- name: edit awxcompose location
+  lineinfile:
+    path: "{{awx_location}}/installer/inventory"
+    regexp: '^docker_compose_dir='
+    line: "docker_compose_dir={{awxcompose_location}}"
+
+- name: edit pgdocker location
+  lineinfile:
+    path: "{{awx_location}}/installer/inventory"
+    regexp: '^postgres_data_dir='
+    line: "postgres_data_dir={{pgdocker_location}}"
+
+- name: edit pg hostname
+  lineinfile:
+    path: "{{awx_location}}/installer/inventory"
+    regexp: 'pg_hostname='
+    line: "pg_hostname={{postgres_host}}"
+
+- name: edit pg password
+  lineinfile:
+    path: "{{awx_location}}/installer/inventory"
+    regexp: '^pg_password='
+    line: "pg_password={{postgres_password}}"
+
+- name: edit pg admin password
+  lineinfile:
+    path: "{{awx_location}}/installer/inventory"
+    regexp: '^pg_admin_password='
+    line: "pg_admin_password={{postgres_admin_password}}"
+
+- name: edit pg database
+  lineinfile:
+    path: "{{awx_location}}/installer/inventory"
+    regexp: '^pg_database='
+    line: "pg_database={{postgres_db}}"
+
+- name: edit pg port
+  lineinfile:
+    path: "{{awx_location}}/installer/inventory"
+    regexp: '^pg_port='
+    line: "pg_port={{postgres_port}}"
+
+- name: create postgres db on remote
+  command: createdb -U {{postgres_user}} -h {{postgres_host}} -p {{postgres_port}} {{postgres_db}}

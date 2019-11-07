@@ -1,0 +1,40 @@
+---
+
+- name: update yum
+  raw: yum update
+
+- name: install docker
+  command: amazon-linux-extras install docker
+
+- name: install ansible2
+  command: amazon-linux-extras install ansible2
+
+- name: install postgresql11
+  command: amazon-linux-extras install postgresql11
+
+- name: check python installed
+  raw: test -e /usr/bin/python
+  changed_when: false
+  failed_when: false
+  register: check_python
+
+- name: install python
+  raw: yum -y install python
+  when: check_python.rc != 0
+
+- name: install pip
+  command: curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py > python
+
+- name: install docker-compose
+  pip:
+    name: docker-compose
+    state: present
+
+- name: get nvm
+  command: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash . ~/.nvm/nvm.sh
+
+- name: run nvm
+  command: . ~/.nvm/nvm.sh
+
+- name: install node and npm with nvm
+  command: nvm install node

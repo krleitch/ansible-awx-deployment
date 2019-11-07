@@ -1,8 +1,11 @@
 ---
-- name: setup and clone awx repo
+- name: install setup run ansible awx
   hosts: all
+  become: true
   roles:
-   - clone
+   - install
+   - setup
+   - run
   tasks:
-   - name: echo message
-     shell: echo "completed!" 
+   - name: echo completion
+     shell: echo "playbook finished running" 

@@ -3,9 +3,6 @@
 - name: update yum
   raw: yum -y update
 
-- name: get amazon linux extras
-  raw: yum -y install amazon-linux-extras
-
 - name: install docker
   command: amazon-linux-extras install docker
 

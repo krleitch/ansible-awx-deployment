@@ -1,8 +1,10 @@
 # Ansible-Playbooks
 Install, setup, and run ansible awx on your ec2 hosts or run local
+
 https://github.com/ansible/awx
 
 run:
+
 ansible-playbook -i inventory/{local,target}/main site.yml
 
 make sure you update target with your own host
@@ -18,9 +20,14 @@ run: runs the awx ansible install playbook
 
 Make sure to update variables for your own use. Here are the variables and default values
 
+### Group Vars
+
 awx_location: /awx
 
+### Setup Vars
+
 awxcompose_location: /tmp/awxcompose
+
 pgdocker_location: /tmp/pgdocker
 
 postgres_host:
@@ -40,10 +47,13 @@ postgres_admin_password:
 Use to interact with the installed instances
 
 install:
+
 sudo pip install "https://github.com/ansible/awx/archive/8.0.0.tar.gz#egg=awxkit&subdirectory=awxkit"
 
 run:
+
 awx --help
 
 documentation:
+
 https://github.com/ansible/awx/tree/devel/awxkit/awxkit/cli/docs

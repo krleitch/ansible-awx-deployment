@@ -1,20 +1,33 @@
 # Ansible-Playbooks
-Install, setup, and run ansible awx on your ec2 hosts or run local
+Install, setup, and run ansible awx with docker on your ec2 hosts or run local
 
 https://github.com/ansible/awx
 
-run:
+### Run
 
 ansible-playbook -i inventory/{local,target}/main site.yml
 
-make sure you update target with your own host
+make sure you update inventory/target/main.yml with your own host
+
+# Requirements
+
+Running amazon linux 2
+
+Uses yum and amazon-linux-extras for package management
 
 # Roles
-install: Gets ansible, postgres, python, pip, docker, docker-compose, node, npm
 
-setup: clones the awx repo, edits config files, setup external postgres db, creates docker group
+### Install
 
-run: runs the awx ansible install playbook
+Gets ansible, postgres, python, pip, docker, docker-compose, node, npm
+
+### Setup
+
+clones the awx repo, edits config files, setup external postgres db, creates docker group
+
+### Run
+
+runs the awx ansible install playbook
 
 # Variables
 
@@ -46,14 +59,14 @@ postgres_admin_password:
 
 Use to interact with the installed instances
 
-install:
+### Install
 
 sudo pip install "https://github.com/ansible/awx/archive/8.0.0.tar.gz#egg=awxkit&subdirectory=awxkit"
 
-run:
+### Run
 
 awx --help
 
-documentation:
+### Documentation
 
 https://github.com/ansible/awx/tree/devel/awxkit/awxkit/cli/docs

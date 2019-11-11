@@ -38,6 +38,12 @@
     regexp: 'pg_hostname='
     line: "pg_hostname={{postgres_host}}"
 
+- name: edit pg usernmae
+  lineinfile:
+    path: "{{awx_location}}/installer/inventory"
+    regexp: '^pg_username='
+    line: "pg_username={{postgres_user}}"
+
 - name: edit pg password
   lineinfile:
     path: "{{awx_location}}/installer/inventory"

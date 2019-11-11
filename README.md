@@ -23,7 +23,7 @@ Gets ansible, postgres, python, pip, docker, docker-compose, node, npm
 
 ### Setup
 
-clones the awx repo, edits config files, setup external postgres db, creates docker group
+clones the awx repo, edits config files, creates docker group
 
 ### Run
 

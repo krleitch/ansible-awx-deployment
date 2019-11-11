@@ -46,6 +46,7 @@
 
 - name: run nvm
   command: . ~/.nvm/nvm.sh
+  become: true
 
 - name: install node and npm with nvm
   command: nvm install node

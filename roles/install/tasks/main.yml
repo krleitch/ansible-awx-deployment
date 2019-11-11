@@ -49,6 +49,7 @@
 
 - name: reload nvm
   command: . nvm.sh
+  become: true
   args:
     chdir: ~/.nvm
 

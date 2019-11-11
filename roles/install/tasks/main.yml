@@ -47,8 +47,9 @@
 - name: run nvm install
   command: bash /install.sh
 
-- name: run nvm
+- name: reload nvm
   command: . $NVM_DIR/.nvm/nvm.sh
+  become: true
 
 - name: install node and npm with nvm
   command: nvm install node

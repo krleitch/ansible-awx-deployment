@@ -69,6 +69,8 @@ Use to interact with the installed instances
 
 sudo pip install "https://github.com/ansible/awx/archive/8.0.0.tar.gz#egg=awxkit&subdirectory=awxkit"
 
+This is already installed as part of the setup role
+
 ### Run
 
 awx --help

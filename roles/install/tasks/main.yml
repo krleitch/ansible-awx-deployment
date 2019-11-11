@@ -31,7 +31,10 @@
   command: python /get-pip.py
 
 - name: install docker-compose
-  command: pip install —ignore-installed docker-compose
+  pip:
+    name: docker-compose
+    extra_args: —-ignore-installed
+    state: present
 
 - name: get nvm
   shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash

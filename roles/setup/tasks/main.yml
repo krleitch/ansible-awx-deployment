@@ -1,7 +1,7 @@
 ---
 
 - name: add user to docker group
-  shell: usermod -aG docker $(whoami)
+  shell: usermod -aG docker $USER
 
 - name: restart docker service
   service:

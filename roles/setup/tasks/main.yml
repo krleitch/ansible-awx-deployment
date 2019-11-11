@@ -68,6 +68,12 @@
     regexp: '^pg_port='
     line: "pg_port={{postgres_port}}"
 
+- name: turn off preload data
+  lineinfile:
+    path: "{{awx_location}}/installer/inventory"
+    regexp: '^create_preload_data='
+    line: "create_preload_data=False"
+
 - name: check if db already exists on remote
   shell: psql -U {{postgres_user}} -h {{postgres_host}} -p {{postgres_port}} -l | grep {{postgres_db}} | wc -l
   environment:

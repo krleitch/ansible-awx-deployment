@@ -48,8 +48,7 @@
   command: bash /install.sh
 
 - name: reload nvm
-  command: . nvm.sh
-  become: true
+  command: bash nvm.sh
   args:
     chdir: ~/.nvm
 

@@ -48,7 +48,7 @@
   command: bash /install.sh
 
 - name: run nvm
-  command: . ~/.nvm/nvm.sh
+  command: . $NVM_DIR/nvm.sh
 
 - name: install node and npm with nvm
   command: nvm install node

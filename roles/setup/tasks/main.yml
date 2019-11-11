@@ -4,7 +4,9 @@
   shell: usermod -aG docker $(whoami)
 
 - name: restart docker service
-  command: service docker restart
+  service:
+    name: docker
+    state: restarted
 
 - name: check if awx repo exists
   stat:
@@ -13,7 +15,7 @@
 
 - name: clone repo
   git:
-    repo: git@github.com:ansible/awx.git
+    repo: https://github.com/ansible/awx.git
     dest: "{{awx_location}}"
     accept_hostkey: yes
   when: repo_exists.stat.exists == false

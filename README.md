@@ -27,7 +27,7 @@ clones the awx repo, edits config files, create external psql db, creates docker
 
 ### Run
 
-runs the awx ansible install playbook
+stops already running docker containers if any, runs the awx ansible install playbook
 
 # Variables
 

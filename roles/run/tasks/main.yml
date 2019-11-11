@@ -5,7 +5,7 @@
     name: awx_task
   register: awx_task_container
 
-- name: 
+- name: stop awx_task
   docker_container:
     name: awx_task
     state: absent
@@ -16,7 +16,7 @@
     name: awx_web
   register: awx_web_container
 
-- name: 
+- name: stop awx_web
   docker_container:
     name: awx_web
     state: absent
@@ -27,7 +27,7 @@
     name: awx_rabbitmq
   register: awx_rabbitmq_container
 
-- name: 
+- name: stop awx_rabbitmq
   docker_container:
     name: awx_rabbitmq
     state: absent
@@ -38,7 +38,7 @@
     name: awx_memcached
   register: awx_memcached_container
 
-- name: 
+- name: stop awx_memcached
   docker_container:
     name: awx_memcached
     state: absent

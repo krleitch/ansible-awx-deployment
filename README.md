@@ -5,9 +5,9 @@ https://github.com/ansible/awx
 
 ### Run
 
-ansible-playbook -i inventory/{local,target}/main site.yml
+ansible-playbook -i inventory/{local,target}/hosts site.yml
 
-make sure you update inventory/target/main.yml with your own host
+make sure you update inventory/target/hosts with your own host
 
 # Requirements
 

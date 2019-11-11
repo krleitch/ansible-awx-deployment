@@ -72,7 +72,19 @@
   lineinfile:
     path: "{{awx_location}}/installer/inventory"
     regexp: '^create_preload_data='
-    line: "create_preload_data=False"
+    line: "create_preload_data={{preload_data}}"
+
+- name: set awx user
+  lineinfile:
+    path: "{{awx_location}}/installer/inventory"
+    regexp: '^admin_user='
+    line: "admin_user={{awx_user}}"
+
+- name: set awx password
+  lineinfile:
+    path: "{{awx_location}}/installer/inventory"
+    regexp: '^admin_password='
+    line: "admin_password={{awx_password}}"
 
 - name: check if db already exists on remote
   shell: psql -U {{postgres_user}} -h {{postgres_host}} -p {{postgres_port}} -l | grep {{postgres_db}} | wc -l

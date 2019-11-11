@@ -23,7 +23,7 @@ Gets ansible, postgres, python, pip, docker, docker-compose, node, npm, awx cli
 
 ### Setup
 
-clones the awx repo, edits config files, create external psql db, creates docker group, turn off preload data
+clones the awx repo, edits config files, create external psql db, creates docker group, set preload data, set awx user/pass
 
 ### Run
 
@@ -54,6 +54,12 @@ postgres_user:
 postgres_password:
 
 postgres_admin_password:
+
+awx_user: admin
+
+awx_password: password
+
+preload_data: False
 
 # AWX CLI
 

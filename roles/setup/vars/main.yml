@@ -9,3 +9,8 @@ postgres_db: awx
 postgres_user:
 postgres_password:
 postgres_admin_password:
+
+awx_user: admin
+awx_password: password
+
+preload_data: False

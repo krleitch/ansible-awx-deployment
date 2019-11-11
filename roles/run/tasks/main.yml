@@ -1,6 +1,6 @@
 ---
 
 - name: run the ansible awx installer
-    command: "ansible-playbook -i inventory install.yml"
-    args:
-      chdir: "{{awx_location}}/installer"
+  command: "ansible-playbook -i inventory install.yml"
+  args:
+    chdir: "{{awx_location}}/installer"

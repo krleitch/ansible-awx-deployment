@@ -4,13 +4,13 @@
   raw: yum -y update
 
 - name: install docker
-  command: amazon-linux-extras install docker
+  command: amazon-linux-extras install -y docker
 
 - name: install ansible2
-  command: amazon-linux-extras install ansible2
+  command: amazon-linux-extras install -y ansible2
 
 - name: install postgresql11
-  command: amazon-linux-extras install postgresql11
+  command: amazon-linux-extras install -y postgresql11
 
 - name: check python installed
   raw: test -e /usr/bin/python

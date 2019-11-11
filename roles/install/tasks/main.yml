@@ -48,8 +48,9 @@
   command: bash /install.sh
 
 - name: reload nvm
-  command: . $NVM_DIR/.nvm/nvm.sh
-  become: true
+  command: . nvm.sh
+  args:
+    chdir: $NVM_DIR/.nvm
 
 - name: install node and npm with nvm
   command: nvm install node

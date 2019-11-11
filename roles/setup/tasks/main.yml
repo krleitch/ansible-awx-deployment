@@ -62,7 +62,7 @@
     regexp: '^pg_port='
     line: "pg_port={{postgres_port}}"
 
-- name: create postgres db on remote
-  command: createdb -U {{postgres_user}} -h {{postgres_host}} -p {{postgres_port}} {{postgres_db}}
-  environment:
-    PGPASSWORD: '{{postgres_password}}'
+# - name: create postgres db on remote
+#   command: createdb -U {{postgres_user}} -h {{postgres_host}} -p {{postgres_port}} {{postgres_db}}
+#   environment:
+#     PGPASSWORD: '{{postgres_password}}'

@@ -50,7 +50,7 @@
 - name: reload nvm
   command: . nvm.sh
   args:
-    chdir: $NVM_DIR/.nvm
+    chdir: ~/.nvm
 
 - name: install node and npm with nvm
   command: nvm install node

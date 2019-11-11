@@ -69,7 +69,9 @@
     line: "pg_port={{postgres_port}}"
 
 - name: check if db already exists on remote
-  command: psql -U {{postgres_user}} -h  {{postgres_host}} -p {{postgres_port}} -l | grep {{postgres_db}} | wc -l
+  command: psql -U {{postgres_user}} -h {{postgres_host}} -p {{postgres_port}} -l | grep {{postgres_db}} | wc -l
+  environment:
+    PGPASSWORD: '{{postgres_password}}'
   register: db_exists
   failed_when: int(db_exists.stdout) == 1 
 

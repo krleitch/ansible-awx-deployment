@@ -73,10 +73,9 @@
   environment:
     PGPASSWORD: '{{postgres_password}}'
   register: db_exists
-  failed_when: db_exists.stdout|int == 1 
 
 - name: create postgres db on remote
   command: createdb -U {{postgres_user}} -h {{postgres_host}} -p {{postgres_port}} {{postgres_db}}
   environment:
     PGPASSWORD: '{{postgres_password}}'
-  when: db_exists.rc == 0
+  when: db_exists.stdout|int != 1 

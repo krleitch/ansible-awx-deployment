@@ -52,3 +52,8 @@
   args:
     chdir: ~/.nvm
     executable: /bin/bash
+
+- name: install the awx cli
+  pip:
+    name: "https://github.com/ansible/awx/archive/8.0.0.tar.gz#egg=awxkit&subdirectory=awxkit"
+    state: present

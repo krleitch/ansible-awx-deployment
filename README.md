@@ -19,7 +19,7 @@ Uses yum and amazon-linux-extras for package management
 
 ### Install
 
-Gets ansible, postgres, python, pip, docker, docker-compose, node, npm
+Gets ansible, postgres, python, pip, docker, docker-compose, node, npm, awx cli
 
 ### Setup
 

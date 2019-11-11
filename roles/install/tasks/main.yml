@@ -47,10 +47,8 @@
 - name: run nvm install
   command: bash /install.sh
 
-- name: reload nvm
-  command: bash nvm.sh
+- name: install node and npm with nvm
+  shell: . nvm.sh && nvm install node
   args:
     chdir: ~/.nvm
-
-- name: install node and npm with nvm
-  command: nvm install node
+    executable: /bin/bash

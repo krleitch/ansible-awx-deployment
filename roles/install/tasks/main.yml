@@ -40,13 +40,15 @@
   command: pip install --ignore-installed docker-compose
 
 - name: get nvm
-  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-  args:
-    warn: no
+  get_url:
+    url: https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh
+    dest: /install.sh
+
+- name: run nvm install
+  command: bash /install.sh
 
 - name: run nvm
   command: . ~/.nvm/nvm.sh
-  become: true
 
 - name: install node and npm with nvm
   command: nvm install node

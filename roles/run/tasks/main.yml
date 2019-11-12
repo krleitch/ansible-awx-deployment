@@ -18,7 +18,7 @@
 
 - name: stop awx_web
   command: docker stop awx_web
-  when: awx_web.stdout|int == 1 
+  when: awx_web_container.stdout|int == 1 
 
 - name: remove awx_web
   command: docker rm awx_web

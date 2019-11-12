@@ -1,50 +1,55 @@
 ---
 
 - name: check if docker awx_task already running
-  docker_container_info:
-    name: awx_task
+  shell: docker ps -a | grep awx_task | wc -l
   register: awx_task_container
 
 - name: stop awx_task
-  docker_container:
-    name: awx_task
-    state: absent
-  when: awx_task_container.exists
+  command: docker stop awx_task
+  when: awx_task_container.stdout|int == 1 
+
+- name: remove awx_task
+  command: docker rm awx_task
+  when: awx_task_container.stdout|int == 1 
 
 - name: check if docker awx_web already running
-  docker_container_info:
-    name: awx_web
+  shell: docker ps -a | grep awx_web | wc -l
   register: awx_web_container
 
 - name: stop awx_web
-  docker_container:
-    name: awx_web
-    state: absent
-  when: awx_web_container.exists
+  command: docker stop awx_web
+  when: awx_web.stdout|int == 1 
+
+- name: remove awx_web
+  command: docker rm awx_web
+  when: awx_web_container.stdout|int == 1 
 
 - name: check if docker awx_rabbitmq already running
-  docker_container_info:
-    name: awx_rabbitmq
+  shell: docker ps -a | grep awx_rabbitmq | wc -l
   register: awx_rabbitmq_container
 
 - name: stop awx_rabbitmq
-  docker_container:
-    name: awx_rabbitmq
-    state: absent
-  when: awx_rabbitmq_container.exists
+  command: docker stop awx_rabbitmq
+  when: awx_rabbitmq_container.stdout|int == 1 
+
+- name: remove awx_rabbitmq
+  command: docker rm awx_rabbitmq
+  when: awx_rabbitmq_container.stdout|int == 1 
 
 - name: check if docker awx_memcached already running
-  docker_container_info:
-    name: awx_memcached
+  shell: docker ps -a | grep awx_memcached | wc -l
   register: awx_memcached_container
 
 - name: stop awx_memcached
-  docker_container:
-    name: awx_memcached
-    state: absent
-  when: awx_memcached_container.exists
+  command: docker stop awx_memcached
+  when: awx_memcached_container.stdout|int == 1 
+
+- name: remove awx_memcached
+  command: docker rm awx_memcached
+  when: awx_memcached_container.stdout|int == 1 
 
 - name: run the ansible awx installer
   command: "ansible-playbook -i inventory install.yml"
   args:
     chdir: "{{awx_location}}/installer"
+    

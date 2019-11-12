@@ -5,9 +5,9 @@ https://github.com/ansible/awx
 
 ### Run
 
-ansible-playbook -i inventory/{local,target}/hosts site.yml
+ansible-playbook -i inventory/{local,awx-target}/hosts awx.yml
 
-make sure you update inventory/target/hosts with your own host
+make sure you update inventory/awx-target/hosts with your own host
 
 # Requirements
 
@@ -17,15 +17,15 @@ Uses yum and amazon-linux-extras for package management
 
 # Roles
 
-### Install
+### Awx-Install
 
 Gets ansible, postgres, python, pip, docker, docker-compose, node, npm, awx cli
 
-### Setup
+### Awx-Setup
 
 clones the awx repo, edits config files, create external psql db, creates docker group, set preload data, set awx user/pass
 
-### Run
+### Awx-Run
 
 stops already running docker containers if any, runs the awx ansible install playbook
 

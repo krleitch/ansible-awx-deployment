@@ -3,9 +3,9 @@
   hosts: all
   become: true
   roles:
-   - install
-   - setup
-   - run
+   - awx-install
+   - awx-setup
+   - awx-run
   tasks:
    - name: echo completion
      shell: echo "playbook finished running" 

@@ -96,4 +96,5 @@
   command: createdb -U {{postgres_user}} -h {{postgres_host}} -p {{postgres_port}} {{postgres_db}}
   environment:
     PGPASSWORD: '{{postgres_password}}'
+  ignore_errors: yes
   when: db_exists.stdout|int != 1 
